@@ -1,0 +1,9 @@
+<div>
+    <h3>Game: {{gameData.title}}</h3>
+    <span *ngIf="gameData.img">
+        <img [src]="gameData.img">
+    </span>
+    <span *ngIf="gameData.price">
+        Price ${{gameData.price}}
+    </span>
+</div>

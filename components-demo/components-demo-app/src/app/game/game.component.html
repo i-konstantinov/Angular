@@ -1,0 +1,16 @@
+<input type="text" [(ngModel)]="searchField"placeholder="Search for a game">
+
+
+<ul #gamesContainer>
+    <li *ngFor="let game of games">
+        <game-item [gameData]="game"></game-item>
+    </li>
+</ul>
+<div>
+    Total games: {{gamesContainer.children.length}}
+</div>
+
+
+<button (click)="handleChangePriceColorClick(gamesContainer)">
+    {{colorPrice ? "Revert to normal" : 'Highlight prices' }}
+</button>
