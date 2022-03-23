@@ -1,1 +1,27 @@
 <h1>Hello from {{title}}</h1>
+<app-test></app-test>
+
+
+<!--Data Binding from view to source-->
+<div>
+    <br>
+    <h3 *ngIf="!hiddenMessage">This message was hidden!</h3>
+    <button (click)="toggleHiddenTextHandler()">{{hiddenMessage ? "Show Hidden Message" : "Hide Message"}}</button>
+</div>
+<div>
+    <br>
+    <button (click)="alertButtonHandler($event, 100, 'blah-blah')">ALERT</button>
+</div>
+
+<!--Two way binding-->
+<div class="none">
+    <br>
+    <h2>Your input here: <span>{{inputValue}}</span></h2>
+    <input #inputField type="text">
+    <button (click)="renderTextInputHandler(inputField)">Render Input</button>
+</div>
+
+<!--users list and its nested components-->
+<div id="content">
+    <app-user-list [userArray]="users" (addUser)="addUserFromChildHandler($event)"></app-user-list>
+</div>
