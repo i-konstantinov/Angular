@@ -1,37 +1,8 @@
 <h1>Hello from {{title}}</h1>
-<div id="timer">
-    <h4>Current time --> <app-time></app-time></h4>
-</div>
-
-<app-test></app-test>
-
-
-<!--Data Binding from view to source-->
-<div>
-    <h3 *ngIf="!hiddenMessage">This message was hidden!</h3>
-    <button (click)="toggleHiddenTextHandler()">{{hiddenMessage ? "Show Hidden Message" : "Hide Message"}}</button>
-    <br>
-</div>
-<div>
-    <button (click)="alertButtonHandler($event, 100, 'blah-blah')">ALERT</button>
-    <br>
-</div>
-
-<!--Two way binding-->
-<div class="none">
-    <h2>Your input here: <span>{{inputValue}}</span></h2>
-    <input #inputField type="text">
-    <button (click)="renderTextInputHandler(inputField)">Render Input</button>
-    <br>
-</div>
-
+<app-header></app-header>
 
 <div id="content">
-    <div id="search">
-        <h2>Search users by email:</h2>
-        <input #searchField type="text" placeholder="Type in email /part of it">
-        <button (click)="searchButtonHandler(searchField)">Go</button>
-    </div>
-    <app-user-list *ngIf="users" [userArray]="users"></app-user-list>
-    <div *ngIf="!users"><h2>Loading users...</h2></div>
+    <router-outlet></router-outlet>
 </div>
+
+<app-footer></app-footer>

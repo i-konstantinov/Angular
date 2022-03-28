@@ -1,0 +1,31 @@
+header {
+    padding: 22px;
+    background-color: #cccccc;
+    position: relative;
+}
+
+nav {
+    display: inline-block;
+    position: absolute;
+    text-align: left;
+}
+
+
+nav a {
+    display: inline-block;
+    background-color: #010101;
+    padding: 8px 16px;
+    margin: 0 8px;
+    text-decoration: none;
+    color: white;
+}
+
+nav a:hover {
+    background-color: #6c8b47;
+    color: white;
+}
+
+a.active {
+    background-color: #6c8b47;
+    color: white;
+}

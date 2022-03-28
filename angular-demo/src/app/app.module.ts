@@ -1,38 +1,29 @@
 import { InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { TestComponent } from './test/test.component';
-import { UserListComponent } from './user-list/user-list.component';
-import { UserListEntryComponent } from './user-list/user-list-entry/user-list-entry.component';
-import { UserService } from './user.service';
 import { HttpClientModule } from '@angular/common/http';
-import { TimeComponent } from './time/time.component';
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
+import { UserModule } from './user/user.module';
+import { AboutComponent } from './about/about.component';
+import { AppRoutingModule } from './app-routing.module';
 
-
-export let myStringInjectionToken = new InjectionToken("myString");
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent,
-    UserListComponent,
-    UserListEntryComponent,
-    TimeComponent
+    AboutComponent
 ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    CoreModule,
+    SharedModule,
+    UserModule,
+    AppRoutingModule
   ],
-  providers: [
-    {
-      provide: UserService,
-      useClass: UserService
-    },
-    {
-      provide: myStringInjectionToken,
-      useValue: "Hello world from injected string!"
-    }
-  ],
+  providers: [],
+  
   bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule { } 
