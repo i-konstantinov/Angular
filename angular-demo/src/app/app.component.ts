@@ -1,48 +1,35 @@
-import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IUser } from './interfaces/user';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'angular-demo';
+export class AppComponent implements OnInit {
+  title: string = 'angular-demo';
   
-  hiddenMessage = true;
+  users: IUser[] | undefined;
 
-  inputValue = "";
+  hiddenMessage: boolean = true;
 
-  users = [
-    {
-      id: 1,
-      name: "Ivan",
-      age: 32,
-      city: "Sofia"
-    },
-    {
-      id: 2,
-      name: "Peter",
-      age: 30,
-      city: "Varna"
-    },
-    {
-      id: 3,
-      name: "George",
-      age: 25,
-      city: "Plovdiv"
-    },
-    {
-      id: 4,
-      name: "Asen",
-      age: 29,
-      city: "Asenovgrad"
-    }
-  ];
+  inputValue: string = "";
 
-  addUserFromChildHandler(newUser: IUser): void {
-    this.users = this.users.concat(newUser);
+  constructor(public userService: UserService) { }
+
+  ngOnInit(): void {
+    this.displayUsers("");
   }
+  searchButtonHandler(searchInput: HTMLInputElement): void {
+    let { value } = searchInput;
+    this.displayUsers(value);
+    searchInput.value = "";
+  }
+  displayUsers(query: string): void {
+    this.userService.loadUsers(query).subscribe(users => this.users = users);
+  }
+
 
   toggleHiddenTextHandler(): void {
     this.hiddenMessage = !this.hiddenMessage;

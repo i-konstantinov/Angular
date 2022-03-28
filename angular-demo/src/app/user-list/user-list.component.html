@@ -1,11 +1,4 @@
 <div id="container">
-    <div id="addUser">
-        <h3>New User Entry</h3>
-        <input #userNameInput type="text" placeholder="Enter name">
-        <input #userAgeInput type="number" placeholder="Enter age">
-        <input #userCityInput type="text" placeholder="Enter city">
-        <button (click)="addUserFromInputHandler(userNameInput, userAgeInput, userCityInput)">Add</button>
-    </div>
     <ul>
         <h3>Users:</h3>
         <app-user-list-entry [user]="entry" *ngFor="let entry of userArray"></app-user-list-entry>

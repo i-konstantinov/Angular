@@ -12,7 +12,7 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
 
 
-
+// Simple event emitter
 class MyEventEmitter<T> {
   subscriptions: ((data: T) => void)[] = [];
   subscribe(fn: (data: T) => void) {
