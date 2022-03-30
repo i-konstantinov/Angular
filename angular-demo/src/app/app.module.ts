@@ -7,12 +7,15 @@ import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
 import { AboutComponent } from './about/about.component';
 import { AppRoutingModule } from './app-routing.module';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { TestModule } from './test/test.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AboutComponent
+    AboutComponent,
+    NotFoundComponent
 ],
   imports: [
     BrowserModule,
@@ -20,7 +23,8 @@ import { AppRoutingModule } from './app-routing.module';
     CoreModule,
     SharedModule,
     UserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TestModule
   ],
   providers: [],
   

@@ -1,0 +1,61 @@
+<div *ngIf="user" id="details">
+    <h2><u>User Info:</u></h2>
+    <section>
+        <h3>Name: {{user.name}}</h3>
+        <h4>Username: {{user.username}}</h4>
+        <h4>Email: {{user.email}}</h4>
+        <h4>Phone: {{user.phone}}</h4>
+    </section>
+
+    <section>
+        <h3>Address</h3>
+        <ul>
+            <li>street: {{user.address.street}}</li>
+            <li>city: {{user.address.city}}</li>
+            <li>zipcode: {{user.address.zipcode}}</li>
+        </ul>
+        <h3>Location</h3>
+        <p>
+            LAT: {{user.address.geo.lat}} / LNG: {{user.address.geo.lng}}
+        </p>
+    </section>
+
+    <section>
+        <h3>Company</h3>
+        <ul>
+            <li>Name: {{user.company.name}}</li>
+            <li>Catchphrase: {{user.company.catchPhrase}}</li>
+            <li>BS: {{user.company.bs}}</li>
+        </ul>
+        <h3>Website: {{user.website}}</h3>
+    </section>
+
+    <br>
+
+    <button routerLink="/details/{{user.id + 1}}">Next User</button>
+    <button routerLink="/user-list">Back to users list</button>
+</div>
+
+<div *ngIf="!user">Loading...</div>
+
+<!--id: number,
+    name: string,
+    username: string,
+    email: string,
+    address: {
+        street: string,
+        suite: string,
+        city: string,
+        zipcode: string,
+        geo: {
+            lat: string,
+            lng: string
+        }
+    },
+    phone: string,
+    website: string,
+    company: {
+        name: string,
+        catchPhrase: string,
+        bs: string
+    }-->
