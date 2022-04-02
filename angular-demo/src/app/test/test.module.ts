@@ -4,6 +4,8 @@ import { OneComponent } from './one/one.component';
 import { TwoComponent } from './two/two.component';
 import { MainComponent } from './main/main.component';
 import { TestRoutingModule } from './test-routing.module';
+import { HighlightDirective } from './highlight.directive';
+import { MyIfDirective } from './my-if.directive';
 
 
 
@@ -11,7 +13,9 @@ import { TestRoutingModule } from './test-routing.module';
   declarations: [
     OneComponent,
     TwoComponent,
-    MainComponent
+    MainComponent,
+    HighlightDirective,
+    MyIfDirective
   ],
   imports: [
     CommonModule,

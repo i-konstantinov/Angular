@@ -1,0 +1,23 @@
+<div class="loginForm">
+    <br>
+    <form #myLoginForm='ngForm' (ngSubmit)="loginHandler(myLoginForm)">
+        <div class="form-control">
+            <label for="email">Email</label>
+            <input (change)="checkFields(emailInput, passwordInput)" type="text" name="email" id="email" #emailInput="ngModel" ngModel required mail [minlength]="8">
+            <ul *ngIf="emailInput.invalid && emailInput.touched" class="errors">
+                <li *ngIf="emailInput.errors!['required']">Email is required!</li>
+                <li *ngIf="emailInput.errors!['mail']">Email is invalid!</li>
+                <li *ngIf="emailInput.errors!['minlength']">Email must be at least 8 characters!</li>
+            </ul>
+        </div>
+        <div class="form-control">
+            <label for="password">Password</label>
+            <input (change)="checkFields(emailInput, passwordInput)" type="text" name="password" id="password" #passwordInput="ngModel" ngModel required [minlength]="3">
+            <ul *ngIf="passwordInput.invalid && passwordInput.touched" class="errors">
+                <li *ngIf="passwordInput.errors!['required']">Password is required!</li>
+                <li *ngIf="passwordInput.errors!['minlength']">Password must be at least 3 characters!</li>
+            </ul>
+        </div>
+        <button [appAllowSubmit]="canSubmit" type="submit">Login</button>
+    </form>
+</div>

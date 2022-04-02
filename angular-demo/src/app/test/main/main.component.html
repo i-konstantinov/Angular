@@ -3,5 +3,29 @@
     <a routerLink="/test/one">Test One</a>
     <br>
     <a routerLink="/test/two">Test Two</a>
+    <br>
+    <div id="directives">
+        <h3>Directives Examples</h3>
+        <button (click)="toggleActive()" [appHighlight]="isActive">Toggle Active</button>
+        <br>
+        <ng-template #isActiveTemplate>
+            IS ACTIVE - TRUE
+        </ng-template>
+        <ng-template #isNotActiveTemplate>
+            IS ACTIVE - FALSE
+        </ng-template>
+    
+        <ng-container *ngTemplateOutlet="isActive ? isActiveTemplate : isNotActiveTemplate"></ng-container>
+        <br>
+        <ng-container *ngIf="isActive else isNotActiveTemplate">
+            IS ACTIVE - TRUE
+        </ng-container>
+    
+        <br>
+        <ng-template [appMyIf]="isActive" let-data="data">{{data}}-> Peek-a-boo!</ng-template>
+        <br>
+        <ng-container *appMyIf="isActive let msg">And Again... {{msg}}</ng-container>
+    </div>
+
 </nav>
 <router-outlet></router-outlet>
