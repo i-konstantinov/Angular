@@ -1,0 +1,51 @@
+
+
+<div class="container">
+
+    <h1>Laptop Form</h1>
+
+    <form #myForm="ngForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+
+            <label for="processor">Proccessor</label>
+
+            <input type="text" class="form-control" id="processor" name="processor" #processor="ngModel" [ngModel]="'Intel Core i7'" required>
+
+            <div *ngIf="processor.touched && processor.invalid" alert alert-danger>Processor is required!</div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="ram">RAM</label>
+
+            <input type="text" class="form-control" id="ram" name="ram" #ram="ngModel" ngModel required>
+            <div *ngIf="ram.touched && ram.invalid" alert alert-danger>Ram is required!</div>
+        </div>
+
+        <div class="form-group">
+
+            <label for="hardDisk">Hard Disk (GB)</label>
+
+            <input type="number" class="form-control" id="hardDisk" name="hardDisk" #hardDisk="ngModel" ngModel required>
+            <div *ngIf="hardDisk.touched && hardDisk.invalid" alert alert-danger>Hard Disk is required and must be a number!</div>
+        </div>
+
+        <div class="form-group">
+
+            <label for="os">Operating System</label>
+        
+            <select class="form-control" id="os" name="os" #os="ngModel" ngModel required >
+        
+                <option *ngFor="let os of operatingSystems" [value]="os">{{os}}</option>
+        
+            </select>
+            <div *ngIf="os.touched && os.invalid" alert alert-danger>Operating System is required!</div>
+        </div>
+        
+        <button type="submit" class="btn btn-success" [disabled]="myForm.invalid">Submit</button>
+
+    </form>
+
+</div>

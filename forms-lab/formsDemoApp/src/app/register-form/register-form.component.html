@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://kit.fontawesome.com/3cd69e2433.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <form #registerForm="ngForm">
+
+            <fieldset>
+                <h1>Registration Form</h1>
+
+                <p class="field field-icon">
+                    <label for="username"><span><i class="fas fa-user"></i></span></label>
+                    <input ngModel #usernameInput="ngModel" type="text" name="username" id="username" name="username"
+                        [class]="(usernameInput.invalid && usernameInput.touched) ? 'error' : ''" placeholder="Mark Ulrich" required
+                        appUsernameValidator>
+                </p>
+                <ng-container *ngIf="usernameInput.errors && usernameInput.touched">
+                    <p class="error" *ngIf="usernameInput.errors['required']">Name is required</p>
+                    <p class="error" *ngIf="usernameInput.errors['msg']">{{usernameInput.errors['msg']}}</p>
+                </ng-container>
+
+
+                <p class="field field-icon">
+                    <label for="email"><span><i class="fas fa-envelope"></i></span></label>
+                    <input #emailInput="ngModel" ngModel type="text" name="email" id="email"
+                        [class]="(emailInput.invalid && emailInput.touched) ? 'error' : ''" placeholder="marк@gmial.com" required email>
+                </p>
+                <p class="error" *ngIf="emailInput.invalid && emailInput.touched">Email is not valid</p>
+
+
+
+                <p class="field field-icon">
+                    <label for="tel"><span><i class="fas fa-phone"></i></span></label>
+                    <select name="tel" id="tel" class="tel">
+                        <option value="1">+359</option>
+                    </select>
+                    <input #phoneInput="ngModel" ngModel type="number" name="tel" id="tel" [class]="phoneInput.errors && phoneInput.touched ? 'error' : null" placeholder="888 888" required minlength="9">
+                </p>
+                <p class="error" *ngIf="phoneInput.invalid && phoneInput.touched">Phone number must be 9 digits</p>
+
+                <p class="field field-icon">
+                    <label for="building"><span><i class="fas fa-building"></i></span></label>
+                    <select name="building" id="building" class="building">
+                        <option value="1">Designer</option>
+                    </select>
+                </p>
+
+
+                <p class="field field-icon">
+                    <label for="password"><span><i class="fas fa-lock"></i></span></label>
+                    <input #passInput="ngModel" ngModel type="password" name="password" id="password" placeholder="******" [class]="(passInput.invalid && passInput.touched) ? 'error' : null" required minlength="3" maxlength="16">
+                </p>
+                <p class="error" *ngIf="passInput.invalid && passInput.touched">Password must be between 3 and 16 characters</p>
+                <p class="field field-icon">
+                    <label for="re-password"><span><i class="fas fa-lock"></i></span></label>
+                    <input #rePassInput="ngModel" ngModel type="password" name="re-password" id="re-password" placeholder="******" [class]="(rePassInput.invalid && rePassInput.touched) ? 'error' : null" required minlength="3" maxlength="16">
+                </p>
+                <p class="error" *ngIf="(passInput.value !== rePassInput.value) && (passInput.touched && rePassInput.touched)">Passwords must match!</p>
+
+
+
+                <p>
+                    <button type="submit" [disabled]="registerForm.invalid ? true : false">
+                    {{registerForm.valid ? 'CAN ' : 'CANNOT '}}Create Account
+                    </button>
+                </p>
+
+                <p class="text-center">
+                    Have an account?
+                    <a>Log In</a>
+                </p>
+
+            </fieldset>
+        </form>
+    </div>
+
+
+</body>
+
+</html>
