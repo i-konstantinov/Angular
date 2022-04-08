@@ -18,8 +18,8 @@ export class RegisterComponent {
   ) {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email, Validators.minLength(6)] ],
-      password: ['', Validators.required],
-      rePassword: ['', Validators.required, passwordsComparer(() => this.form?.get('password')!)]
+      password: ['', [Validators.required, Validators.minLength(3)]],
+      rePassword: ['', [Validators.required, passwordsComparer(() => this.form?.get('password')!)]]
     });
   }
 }
