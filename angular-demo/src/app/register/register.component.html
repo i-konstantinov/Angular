@@ -1,0 +1,39 @@
+<div class="registerForm">
+    <br>
+    
+    <form [formGroup]="form" >
+        <div class="form-control">
+            <label for="email">Email</label>
+            <input formControlName="email" type="text" name="email" id="email" >
+
+            <p *ngIf="form.get('email')?.errors?.['required'] && form.get('email')?.touched" class="errors">
+                Email is required!
+            </p>
+            {{form.get('email')?.errors | json}}
+            <p *ngIf="form.get('email')?.errors?.['email'] && form.get('email')?.touched" class="error">
+                Email is invalid!
+            </p>
+            <p *ngIf="form.get('email')?.errors?.['minlength'] && form.get('email')?.touched" class="error">
+                Email must have atleast 6 symbols!
+            </p>
+        </div>
+
+        <div class="form-control">
+            <label for="password">Password</label>
+            <input formControlName="password" type="text" name="password" id="password" >
+            
+            <!-- <ul *ngIf="passwordInput.invalid && passwordInput.touched" class="errors">
+                <li *ngIf="passwordInput.errors!['required']">Password is required!</li>
+                <li *ngIf="passwordInput.errors!['minlength']">Password must be at least 3 characters!</li>
+            </ul> -->
+        </div>
+
+        <div class="form-control">
+            <label for="rePassword">Repeat Password</label>
+            <input formControlName="rePassword" type="text" name="rePassword" id="rePassword" >
+        </div>
+        <p *ngIf="form.get('rePassword')?.errors?.['noMatch'] && form.get('rePassword')?.touched" class="errors">Repeat Password does not match original Password!</p>
+
+        <button type="submit">Register</button>
+    </form>
+</div>

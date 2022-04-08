@@ -10,8 +10,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { TestModule } from './test/test.module';
 import { LoginComponent } from './login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AllowSubmitDirective } from './login/allow-submit.directive';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -20,12 +21,14 @@ import { AllowSubmitDirective } from './login/allow-submit.directive';
     AboutComponent,
     NotFoundComponent,
     LoginComponent,
-    AllowSubmitDirective
+    AllowSubmitDirective,
+    RegisterComponent
 ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     CoreModule,
     AppRoutingModule,
     SharedModule,
