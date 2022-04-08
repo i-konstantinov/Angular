@@ -13,29 +13,28 @@
 
     <div class="container">
 
-        <form #registerForm="ngForm">
+        <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
 
             <fieldset>
                 <h1>Registration Form</h1>
 
                 <p class="field field-icon">
                     <label for="username"><span><i class="fas fa-user"></i></span></label>
-                    <input ngModel #usernameInput="ngModel" type="text" name="username" id="username" name="username"
-                        [class]="(usernameInput.invalid && usernameInput.touched) ? 'error' : ''" placeholder="Mark Ulrich" required
-                        appUsernameValidator>
+                    <input formControlName="username"  type="text" name="username" id="username" name="username"
+                        [class]="" placeholder="Mark Ulrich" >
                 </p>
-                <ng-container *ngIf="usernameInput.errors && usernameInput.touched">
+                <!-- <ng-container *ngIf="usernameInput.errors && usernameInput.touched">
                     <p class="error" *ngIf="usernameInput.errors['required']">Name is required</p>
                     <p class="error" *ngIf="usernameInput.errors['msg']">{{usernameInput.errors['msg']}}</p>
-                </ng-container>
+                </ng-container> -->
 
 
                 <p class="field field-icon">
                     <label for="email"><span><i class="fas fa-envelope"></i></span></label>
-                    <input #emailInput="ngModel" ngModel type="text" name="email" id="email"
-                        [class]="(emailInput.invalid && emailInput.touched) ? 'error' : ''" placeholder="marк@gmial.com" required email>
+                    <input formControlName="email" type="text" name="email" id="email"
+                        [class]="(false) ? 'error' : ''" placeholder="marк@gmial.com">
                 </p>
-                <p class="error" *ngIf="emailInput.invalid && emailInput.touched">Email is not valid</p>
+                <!-- <p class="error" *ngIf="emailInput.invalid && emailInput.touched">Email is not valid</p> -->
 
 
 
@@ -44,9 +43,9 @@
                     <select name="tel" id="tel" class="tel">
                         <option value="1">+359</option>
                     </select>
-                    <input #phoneInput="ngModel" ngModel type="number" name="tel" id="tel" [class]="phoneInput.errors && phoneInput.touched ? 'error' : null" placeholder="888 888" required minlength="9">
+                    <input formControlName="tel" type="number" name="tel" id="tel" [class]="(false) ? 'error' : null" placeholder="888 888">
                 </p>
-                <p class="error" *ngIf="phoneInput.invalid && phoneInput.touched">Phone number must be 9 digits</p>
+                <!-- <p class="error" *ngIf="phoneInput.invalid && phoneInput.touched">Phone number must be 9 digits</p> -->
 
                 <p class="field field-icon">
                     <label for="building"><span><i class="fas fa-building"></i></span></label>
@@ -58,20 +57,22 @@
 
                 <p class="field field-icon">
                     <label for="password"><span><i class="fas fa-lock"></i></span></label>
-                    <input #passInput="ngModel" ngModel type="password" name="password" id="password" placeholder="******" [class]="(passInput.invalid && passInput.touched) ? 'error' : null" required minlength="3" maxlength="16">
+                    <input formControlName="password" type="password" name="password" id="password" placeholder="******" >
                 </p>
-                <p class="error" *ngIf="passInput.invalid && passInput.touched">Password must be between 3 and 16 characters</p>
+                <!-- <p class="error" *ngIf="passInput.invalid && passInput.touched">Password must be between 3 and 16 characters</p> -->
+               
                 <p class="field field-icon">
                     <label for="re-password"><span><i class="fas fa-lock"></i></span></label>
-                    <input #rePassInput="ngModel" ngModel type="password" name="re-password" id="re-password" placeholder="******" [class]="(rePassInput.invalid && rePassInput.touched) ? 'error' : null" required minlength="3" maxlength="16">
+                    <input (change)="matchPasswords()" formControlName="re-password" type="password" name="re-password" id="re-password" placeholder="******" 
+                    [class]="matchingPasswords ? null : 'error' ">
                 </p>
-                <p class="error" *ngIf="(passInput.value !== rePassInput.value) && (passInput.touched && rePassInput.touched)">Passwords must match!</p>
-
+                <p class="error" *ngIf="!matchingPasswords">Passwords must match!</p>
+               
 
 
                 <p>
-                    <button type="submit" [disabled]="registerForm.invalid ? true : false">
-                    {{registerForm.valid ? 'CAN ' : 'CANNOT '}}Create Account
+                    <button type="submit" >Register
+                    <!-- {{registerForm.valid ? 'CAN ' : 'CANNOT '}}Create Account -->
                     </button>
                 </p>
 
