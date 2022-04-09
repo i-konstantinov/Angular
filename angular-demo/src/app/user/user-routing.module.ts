@@ -4,9 +4,8 @@ import { UserDetailsComponent } from "../user/user-details/user-details.componen
 import { UserListComponent } from "../user/user-list/user-list.component";
 
 let routes: Routes = [
-
     {
-        path: "user-list",
+        path: "list",
         component: UserListComponent
     },
     {
@@ -15,7 +14,7 @@ let routes: Routes = [
         canActivate: [ ParamsActivate ],
         data: {
             hasProps: ["id"],
-            redirectUrl: "user-list",
+            redirectUrl: "user/list",
         }
     }
 ];

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -8,4 +9,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title: string = 'Angular-demo';
+  data = [{test: 1}, {test: 2}, {test: 3}];
 }

@@ -1,4 +1,4 @@
-import { Routes, RouterModule } from "@angular/router";
+import { Routes, RouterModule, PreloadAllModules } from "@angular/router";
 import { AboutComponent } from "./about/about.component";
 import { LoginComponent } from "./login/login.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
@@ -9,7 +9,13 @@ let routes: Routes = [
     {
         path: '',
         pathMatch: "full",
-        redirectTo: '/user-list'
+        redirectTo: '/about'
+    },
+    {
+        path: 'user',
+        loadChildren: () => import('./user/user.module').then(
+            module => module.UserModule
+        )
     },
     {
         path: 'about',
@@ -29,4 +35,7 @@ let routes: Routes = [
     }
 ];
 
-export const AppRoutingModule = RouterModule.forRoot(routes);
+export const AppRoutingModule = RouterModule.forRoot(routes, {
+    enableTracing: true,
+    preloadingStrategy: PreloadAllModules
+});

@@ -1,6 +1,7 @@
 <h1>Hello from {{title}}</h1>
 <app-header></app-header>
-
+<br>
+{{ data | getProp : [0, 'test']}}
 <div id="content">
     <router-outlet></router-outlet>
 </div>

@@ -32,8 +32,8 @@
 
     <br>
 
-    <button routerLink="/details/{{user.id + 1}}">Next User</button>
-    <button routerLink="/user-list">Back to users list</button>
+    <button routerLink="/user/details/{{user.id + 1}}">Next User</button>
+    <button routerLink="/user/list">Back to users list</button>
 </div>
 
 <div *ngIf="!user">Loading...</div>

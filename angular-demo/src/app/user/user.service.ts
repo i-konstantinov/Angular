@@ -9,10 +9,10 @@ export class UserService {
 
   loadUsers(search: string = ""): Observable<IUser[]> {
     const query = search ? `?email_like=${search}` : "";
-    return this.http.get<IUser[]>(`https://jsonplaceholder.typicode.com/users/${query}`);
+    return this.http.get<IUser[]>(`/api/users/${query}`);
   }
 
   loadUserById(id: number) {
-    return this.http.get<IUser>(`https://jsonplaceholder.typicode.com/users/${id}`);
+    return this.http.get<IUser>(`/api/users/${id}`);
   }
 }
