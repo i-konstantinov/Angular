@@ -9,20 +9,13 @@ import { UserService } from '../user.service';
   templateUrl: './user-details.component.html',
   styleUrls: ['./user-details.component.css']
 })
-export class UserDetailsComponent implements OnInit {
-  user!: IUser;
-  constructor(private activatedRoute: ActivatedRoute, private userService: UserService) { }
-  
-  ngOnInit(): void {
-    // this.userService
-    // .loadUserById(this.activatedRoute.snapshot.params['id'])
-    // .subscribe(data => this.user = data);
-    this.activatedRoute.params
-    .pipe(
-      switchMap(({ id }) => this.userService.loadUserById(id))
-    )
-    .subscribe(
-      data => this.user = data
-    )
-  }  
+export class UserDetailsComponent {
+  user$ = this.userService.user$;
+  constructor(
+    activatedRoute: ActivatedRoute,
+    private userService: UserService
+  ) {
+    activatedRoute.params
+    .subscribe(({ id }) => this.userService.loadUserById(id));
+  }
 }

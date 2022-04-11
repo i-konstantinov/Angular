@@ -1,4 +1,4 @@
-<div *ngIf="user" id="details">
+<div *ngIf="(user$ | async) as user" id="details">
     <h2><u>User Info:</u></h2>
     <section>
         <h3>Name: {{user.name}}</h3>
@@ -36,26 +36,4 @@
     <button routerLink="/user/list">Back to users list</button>
 </div>
 
-<div *ngIf="!user">Loading...</div>
-
-<!--id: number,
-    name: string,
-    username: string,
-    email: string,
-    address: {
-        street: string,
-        suite: string,
-        city: string,
-        zipcode: string,
-        geo: {
-            lat: string,
-            lng: string
-        }
-    },
-    phone: string,
-    website: string,
-    company: {
-        name: string,
-        catchPhrase: string,
-        bs: string
-    }-->
+<div *ngIf="!(user$ | async)">Loading...</div>

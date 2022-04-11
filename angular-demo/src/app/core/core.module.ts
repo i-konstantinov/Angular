@@ -6,6 +6,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { ParamsActivate } from './guards/params.activate';
 import { appInterceptorProvider } from './app-interceptor';
+import { AuthGuard } from './guards/auth.guard';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { appInterceptorProvider } from './app-interceptor';
   ],
   providers: [
     ParamsActivate,
+    AuthGuard,
     appInterceptorProvider
   ],
   exports: [

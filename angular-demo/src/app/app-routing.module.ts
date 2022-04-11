@@ -1,5 +1,6 @@
 import { Routes, RouterModule, PreloadAllModules } from "@angular/router";
 import { AboutComponent } from "./about/about.component";
+import { AuthGuard } from "./core/guards/auth.guard";
 import { LoginComponent } from "./login/login.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { RegisterComponent } from "./register/register.component";
@@ -15,7 +16,8 @@ let routes: Routes = [
         path: 'user',
         loadChildren: () => import('./user/user.module').then(
             module => module.UserModule
-        )
+        ),
+        canLoad: [AuthGuard]
     },
     {
         path: 'about',
@@ -36,6 +38,6 @@ let routes: Routes = [
 ];
 
 export const AppRoutingModule = RouterModule.forRoot(routes, {
-    enableTracing: true,
+    enableTracing: false,
     preloadingStrategy: PreloadAllModules
 });

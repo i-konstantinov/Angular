@@ -6,7 +6,10 @@ import { UserListComponent } from "../user/user-list/user-list.component";
 let routes: Routes = [
     {
         path: "list",
-        component: UserListComponent
+        component: UserListComponent,
+        data: {
+            needsAuth: false
+        }
     },
     {
         path: 'details/:id',

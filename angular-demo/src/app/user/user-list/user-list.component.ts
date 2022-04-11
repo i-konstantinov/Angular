@@ -8,20 +8,15 @@ import { IUser } from '../../interfaces/user';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-
-  users: IUser[] | undefined;
-
   constructor(public userService: UserService) { }
-
+  users$ = this.userService.users$;
+  displayUsers = this.userService.loadUsers;
   ngOnInit(): void {
-    this.displayUsers("");
+    this.displayUsers('');
   }
   searchButtonHandler(searchInput: HTMLInputElement): void {
     let { value } = searchInput;
     this.displayUsers(value);
     searchInput.value = "";
-  }
-  displayUsers(query: string): void {
-    this.userService.loadUsers(query).subscribe(users => this.users = users);
   }
 }

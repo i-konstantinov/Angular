@@ -7,10 +7,9 @@
 <div id="users-container">
     <ul>
         <h3>Users:</h3>
-        <app-user-list-entry [user]="entry" *ngFor="let entry of users"></app-user-list-entry>
+        <app-user-list-entry [user]="entry" *ngFor="let entry of (users$ | async)"></app-user-list-entry>
     </ul>
 </div>
-
-<div *ngIf="!users">
+<div *ngIf="!(users$ | async)">
     <h2>Loading users...</h2>
 </div>

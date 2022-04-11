@@ -6,6 +6,7 @@ import { MainComponent } from './main/main.component';
 import { TestRoutingModule } from './test-routing.module';
 import { HighlightDirective } from './highlight.directive';
 import { MyIfDirective } from './my-if.directive';
+import { UserService } from '../user/user.service';
 
 
 
@@ -20,6 +21,7 @@ import { MyIfDirective } from './my-if.directive';
   imports: [
     CommonModule,
     TestRoutingModule
-  ]
+  ],
+  providers: [UserService]
 })
 export class TestModule { }
